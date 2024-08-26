@@ -1,31 +1,101 @@
-# Getting Started with Your Node TypeScript NPM Package
+# 🌟 fade-gallery
 
-Follow these steps to customize and set up your package:
+Fade between images in your React app with customizable transitions and easy navigation.
 
-1. **Update Package Name**  
-   - Modify _your-package-name_ in _package.json_ and other relevant files to reflect your package's name.
+### Key Features:
+- **Seamless Image Fading**: Easily transition between images with smooth fade effects.
+- **Customizable**: Adjust the fade duration and interval to suit your needs.
+- **Navigation Functions**: Built-in `next` and `previous` functions for easy control.
 
-2. **Update Command Line Interface (CLI) Command**  
-   - Update the _bin/*_ files to define the CLI command you want to use.
-   - Reflect these changes in the _package.json_ under the _bin_ section.
+## 🚀 Installation
+To install fade-gallery, run the following command:
 
-3. **Setup Git Repository**  
-   - Initialize your Git repository.
-   - Add GitHub Actions as _coverall-github-action-workflow_ (copy and paste is fine, but feel free to modify if needed).
+```bash
+npm install fade-gallery
+```
 
-4. **Fill in the README**  
-   - Provide detailed information about your package in the README file.
+## 🛠 Getting Started
+To get started, simply import the `fadeGallery` function into your React component:
 
-5. **Add Your Code**  
-   - Add your package files to the _src/*_ directory.
+```javascript
+import fadeGallery from 'fade-gallery';
+```
 
-6. **Use .js Extensions**  
-   - Ensure that all imports use _.js_ extensions, since this package outputs both ESM and CJS formats.
+Then, initialize it with your desired images, interval, and fade duration:
 
-7. **Modify .gitignore**  
-   - The _.gitignore_ file is already set up, but feel free to add any other files you want to ignore.
+```javascript
+const { img1Props, img2Props, previous, next } = fadeGallery({
+    images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
+    interval: 3000,
+    fadeDuration: '2s'
+});
+```
 
-8. **Configure TypeScript**  
-   - Modify the TypeScript configuration in _config/*_ to suit your needs.
-   - _esModuleInterop_ is turned off in _tsconfig_ because this is a package. If you turn it on, any other package using this will need to have it enabled too.
-# fade-gallery
+Use the returned props on your `<img>` elements:
+
+```javascript
+<img {...img1Props} alt="Image 1" />
+<img {...img2Props} alt="Image 2" />
+```
+
+And use the `next` and `previous` functions to control the image transitions.
+
+## 📸 Example
+Here’s how to use fade-gallery in your component:
+
+```javascript
+import fadeGallery from 'fade-gallery';
+
+function MyComponent() {
+    const { img1Props, img2Props, previous, next } = fadeGallery({
+        images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
+        interval: 3000,
+        fadeDuration: '2s'
+    });
+
+    return (
+        <div>
+            <img {...img1Props} alt="Image 1" />
+            <img {...img2Props} alt="Image 2" />
+            <button onClick={previous}>Previous</button>
+            <button onClick={next}>Next</button>
+        </div>
+    );
+}
+```
+_Example GIF coming soon..._
+<!-- ![Example image](path.png) -->
+
+## 🌟 Why Choose fade-gallery?
+- **Lightweight**: Minimal overhead, easy to integrate.
+- **Customizable**: Fine-tune the transition effects to match your design.
+- **Simple API**: Easy to use with just a few lines of code.
+
+## 🌍 Supported Environments
+fade-gallery is compatible with all modern browsers and works seamlessly with React 16.8 and above.
+
+## 🎨 Customization
+react-gallery imgxProps modify these css properties:
+- opacity
+- backgroundImage
+- transitionProperty
+- transitionTimingFunction
+- transitionDuration
+
+Feel free to override these css props with your own values.
+
+You can customize the fading effect by adjusting the `fadeDuration` and `interval` options:
+
+```javascript
+const { img1Props, img2Props } = fadeGallery({
+    images: ['image1.jpg', 'image2.jpg'],
+    interval: 5000,
+    fadeDuration: '3s'
+});
+```
+
+- **interval**: The time (in milliseconds) between each image transition.
+- **fadeDuration**: The duration (in seconds) of the fade effect.
+
+## 🔧 Acknowledgments & Contributions
+Feel free to fork, open issues, or submit pull requests to help improve this project.
