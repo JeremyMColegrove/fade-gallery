@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from 'react';
+import convert from 'css-time-converter'
 
 interface FadeGalleryProps {
     images: string[];
@@ -6,15 +7,14 @@ interface FadeGalleryProps {
     fadeDuration: string;
 }
 
-const defaultProps = {
+const defaultProps:FadeGalleryProps = {
     images: [],
     interval: 5000,
     fadeDuration: '4s'
 }
 
-export default function fadeGallery(props: FadeGalleryProps) {
+export default function fadeGallery(props: Partial<FadeGalleryProps>) {
     const options = Object.assign(defaultProps, props)
-
     const index = useRef<number>(0)
     const [turn, setTurn] = useState(1);
 
@@ -45,6 +45,7 @@ export default function fadeGallery(props: FadeGalleryProps) {
             props.opacity = turn == 1 ? 1 : 0
             return props
         })
+
         setTurn(a=>a==1?0:1);
         index.current = i
     }
@@ -65,8 +66,8 @@ export default function fadeGallery(props: FadeGalleryProps) {
     };
 
     return {
-        img1Props,
-        img2Props,
+        styleProps1: img1Props,
+        styleProps2: img2Props,
         previous,
         next
     }

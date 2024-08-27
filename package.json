@@ -1,6 +1,6 @@
 {
   "name": "fade-gallery",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Controller to fade between images in React",
   "type": "module",
   "exports": {
@@ -32,7 +32,13 @@
     "url": "https://github.com/JeremyMColegrove/fade-gallery"
   },
   "license": "MIT",
-  "keywords": ["fade", "image", "transition", "gallery", "react"],
+  "keywords": [
+    "fade",
+    "image",
+    "transition",
+    "gallery",
+    "react"
+  ],
   "author": "Jeremy Colegrove",
   "bugs": {
     "url": "https://github.com/JeremyMColegrove/fade-gallery/issues"
@@ -50,6 +56,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "css-time-converter": "^1.0.3",
     "react": "^18.3.1"
   }
 }

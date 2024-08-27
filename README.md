@@ -24,7 +24,7 @@ import fadeGallery from 'fade-gallery';
 Then, initialize it with your desired images, interval, and fade duration:
 
 ```javascript
-const { img1Props, img2Props, previous, next } = fadeGallery({
+const { styleProps1, styleProps2, previous, next } = fadeGallery({
     images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
     interval: 3000,
     fadeDuration: '2s'
@@ -34,8 +34,8 @@ const { img1Props, img2Props, previous, next } = fadeGallery({
 Use the returned props on your `<img>` elements:
 
 ```javascript
-<img {...img1Props} alt="Image 1" />
-<img {...img2Props} alt="Image 2" />
+<div style={...styleProps1} alt="Image 1" />
+<div style={...styleProps2} alt="Image 2" />
 ```
 
 And use the `next` and `previous` functions to control the image transitions.
@@ -47,7 +47,7 @@ Here’s how to use fade-gallery in your component:
 import fadeGallery from 'fade-gallery';
 
 function MyComponent() {
-    const { img1Props, img2Props, previous, next } = fadeGallery({
+    const { styleProps1, styleProps2, previous, next } = fadeGallery({
         images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
         interval: 3000,
         fadeDuration: '2s'
@@ -55,8 +55,8 @@ function MyComponent() {
 
     return (
         <div>
-            <img {...img1Props} alt="Image 1" />
-            <img {...img2Props} alt="Image 2" />
+            <div style={...styleProps1}/>
+            <div style={...styleProps2} />
             <button onClick={previous}>Previous</button>
             <button onClick={next}>Next</button>
         </div>
@@ -87,7 +87,7 @@ Feel free to override these css props with your own values.
 You can customize the fading effect by adjusting the `fadeDuration` and `interval` options:
 
 ```javascript
-const { img1Props, img2Props } = fadeGallery({
+const { styleProps1, styleProps2 } = fadeGallery({
     images: ['image1.jpg', 'image2.jpg'],
     interval: 5000,
     fadeDuration: '3s'
